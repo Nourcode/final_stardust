@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 863042677
+    locked: 0
+  - name: Player
+    uniqueID: 1987940651
+    locked: 0
