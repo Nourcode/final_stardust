@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Draganos
   description: 
-  frontSprite: {fileID: 21300000, guid: b5c4dad210373d349a9bdf104050815f, type: 3}
+  frontSprite: {fileID: 21300000, guid: 57687f7127c2e3845b93e5328c36cf5f, type: 3}
   backSprite: {fileID: 0}
   type1: 2
   maxHP: 45
@@ -24,3 +24,4 @@ MonoBehaviour:
   spAttack: 65
   spDefense: 65
   speed: 45
+  learnableMoves: []

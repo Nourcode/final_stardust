@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Kairox
   description: 
   frontSprite: {fileID: 0}
-  backSprite: {fileID: 21300000, guid: f5a4c17b3cab7e64f9aee5726d6b9b69, type: 3}
+  backSprite: {fileID: 21300000, guid: 5c070cceecc3ac144b0aa4b221d0cdd6, type: 3}
   type1: 4
   maxHP: 39
   maxMP: 20
@@ -24,3 +24,4 @@ MonoBehaviour:
   spAttack: 60
   spDefense: 50
   speed: 65
+  learnableMoves: []
