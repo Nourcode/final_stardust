@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47fa80cdd37d0a140a7c5143be285914, type: 3}
-  m_Name: Water Flow
+  m_Name: Aqua Cut
   m_EditorClassIdentifier: 
-  name: Water Flow
+  name: Aqua Cut
   description: 
   type: 2
   power: 40
