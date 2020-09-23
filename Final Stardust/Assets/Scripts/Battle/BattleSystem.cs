@@ -30,10 +30,12 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.SetMoveNames(playerUnit.Monster.Moves);
 
+        
         yield return dialogBox.TypeDialog("It's time for a duel!");
         yield return new WaitForSeconds(1.5f);
         yield return dialogBox.TypeDialog("*You draw a card*");
         yield return new WaitForSeconds(1.5f);
+        
 
         PlayerAction();
     }
@@ -60,11 +62,17 @@ public class BattleSystem : MonoBehaviour
         var move = playerUnit.Monster.Moves[currentMove];
         
         yield return dialogBox.TypeDialog($"{playerUnit.Monster.Base.Name} uses {move.Base.Name}");
+
+        StartCoroutine(playerUnit.PlayAttackAnimation());
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         bool isFainted = enemyUnit.Monster.TakeDamage(move, playerUnit.Monster);
         yield return enemyHud.UpdateHP();
+
+        yield return new WaitForSeconds(0.5f);
+        playerUnit.Monster.LoseMP(move);
+        yield return playerHud.UpdateMP();
 
 
         if(isFainted)
@@ -84,8 +92,10 @@ public class BattleSystem : MonoBehaviour
         var move = enemyUnit.Monster.GetRandomMove();
 
         yield return dialogBox.TypeDialog($"{enemyUnit.Monster.Base.Name} uses {move.Base.Name}");
+
+        StartCoroutine(enemyUnit.PlayEnemyAttackAnimation());
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         bool isFainted = playerUnit.Monster.TakeDamage(move, enemyUnit.Monster);
         yield return playerHud.UpdateHP();

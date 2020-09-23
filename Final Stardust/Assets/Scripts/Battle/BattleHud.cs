@@ -26,4 +26,9 @@ public class BattleHud : MonoBehaviour
     {
         yield return hpBar.SetHPSmooth((float)_monster.HP / _monster.MaxHP);
     }
+
+    public IEnumerator UpdateMP()
+    {
+        yield return mpBar.SetMPSmooth((float)_monster.MP / _monster.MaxMP);
+    }
 }

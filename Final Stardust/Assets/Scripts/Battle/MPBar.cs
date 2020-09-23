@@ -11,7 +11,7 @@ public class MPBar : MonoBehaviour
         mana.transform.localScale = new Vector3(mpNormalized, 1f);
     }
 
-    public IEnumerator SetHPSmooth(float newMana)
+    public IEnumerator SetMPSmooth(float newMana)
     {
         float curMana = mana.transform.localScale.x;
         float changeAmt = curMana - newMana;

@@ -77,6 +77,11 @@ public class Monster
         return false;
     }
 
+    public void LoseMP(Move move)
+    {
+        MP -= move.Base.MP;
+    }
+
     public Move GetRandomMove()
     {
         int r = Random.Range(0, Moves.Count);
