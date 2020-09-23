@@ -67,6 +67,8 @@ public class BattleSystem : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
 
+        enemyUnit.PlayHitAnimation();
+
         bool isFainted = enemyUnit.Monster.TakeDamage(move, playerUnit.Monster);
         yield return enemyHud.UpdateHP();
 
@@ -78,6 +80,7 @@ public class BattleSystem : MonoBehaviour
         if(isFainted)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Monster.Base.Name} is K.O!");
+            enemyUnit.PlayFaintAnimation();
 
         } else 
         {
@@ -97,12 +100,14 @@ public class BattleSystem : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
 
+        playerUnit.PlayHitAnimation();
         bool isFainted = playerUnit.Monster.TakeDamage(move, enemyUnit.Monster);
         yield return playerHud.UpdateHP();
 
         if(isFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Monster.Base.Name} is K.O!");
+            playerUnit.PlayFaintAnimation();
 
         } else 
         {

@@ -6043,7 +6043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lettersPerSecond: 30
-  highlightedColor: {r: 1, g: 0, b: 0, a: 1}
+  highlightedColor: {r: 1, g: 0.8862746, b: 0, a: 1}
   dialogText: {fileID: 441677429}
   actionSelector: {fileID: 1371609895}
   moveSelector: {fileID: 840920916}

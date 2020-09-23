@@ -14,6 +14,7 @@ public class BattleUnit : MonoBehaviour
 
     Image image;
     Vector3 originalPos;
+    Color originalColor;
 
     [SerializeField] private Animator myAnimationController;
     [SerializeField] private Animator enemyAnimationController;
@@ -21,6 +22,7 @@ public class BattleUnit : MonoBehaviour
     private void Awake() {
         image = GetComponent<Image>();
         originalPos = image.transform.localPosition;
+        originalColor = image.color;
     }
 
     public void Setup()
@@ -65,7 +67,7 @@ public class BattleUnit : MonoBehaviour
 
     public IEnumerator PlayEnemyAttackAnimation()
     {
-        
+
         enemyAnimationController.SetBool("playAquaCut", true);
 
         yield return new WaitForSeconds(0.1f);
@@ -75,4 +77,19 @@ public class BattleUnit : MonoBehaviour
         yield return null;
         
     }
+
+    public void PlayHitAnimation()
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(image.DOColor(Color.grey, 0.2f));
+        sequence.Append(image.DOColor(originalColor, 0.2f));
+    }
+
+    public void PlayFaintAnimation()
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(image.transform.DOLocalMoveY(originalPos.y - 150f, 0.5f));
+        sequence.Join(image.DOFade(0f, 0.5f));
+    }
+
 }
