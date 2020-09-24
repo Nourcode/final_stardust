@@ -18,7 +18,7 @@ public class MPBar : MonoBehaviour
 
         while (curMana - newMana > Mathf.Epsilon)
         {
-            curMana -= changeAmt * Time.deltaTime;
+            curMana -= changeAmt * (Time.deltaTime / 2);
             mana.transform.localScale = new Vector3(curMana, 1f);
             yield return null;
         }

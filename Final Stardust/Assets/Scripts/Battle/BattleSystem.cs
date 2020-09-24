@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
@@ -12,12 +13,14 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud playerHud;
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
+
+    public event Action<bool> OnBattleOver;
  
     BattleState state;
     int currentAction;
     int currentMove;
 
-    private void Start() {
+    public void StartBattle() {
         StartCoroutine(SetupBattle());
     }
 
@@ -65,7 +68,7 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(playerUnit.PlayAttackAnimation());
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         enemyUnit.PlayHitAnimation();
 
@@ -81,6 +84,9 @@ public class BattleSystem : MonoBehaviour
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Monster.Base.Name} is K.O!");
             enemyUnit.PlayFaintAnimation();
+
+            yield return new WaitForSeconds(2f);
+            OnBattleOver(true);
 
         } else 
         {
@@ -98,7 +104,7 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(enemyUnit.PlayEnemyAttackAnimation());
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         playerUnit.PlayHitAnimation();
         bool isFainted = playerUnit.Monster.TakeDamage(move, enemyUnit.Monster);
@@ -109,12 +115,15 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{playerUnit.Monster.Base.Name} is K.O!");
             playerUnit.PlayFaintAnimation();
 
+            yield return new WaitForSeconds(2f);
+            OnBattleOver(false);
+
         } else 
         {
             PlayerAction();
         }
     }
-    private void Update() {
+    public void HandleUpdate() {
         if(state == BattleState.PlayerAction)
         {
             HandleActionSelection();

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
     public LayerMask solidObjectsLayer;
+
+    public event Action OnDialogue;
 
     private bool isMoving;
     private Vector2 input;
@@ -18,7 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Update()
+    public void HandleUpdate()
     {
         if(!isMoving)
         {
@@ -61,6 +64,8 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+
+
     }
 
     private bool isWalkable(Vector3 targetPos)
@@ -71,5 +76,15 @@ public class PlayerController : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        CheckForBattle();
+    }
+    
+    private void CheckForBattle()
+    {
+        animator.SetBool("isMoving", false);
+        OnDialogue();
     }
 }

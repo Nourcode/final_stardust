@@ -36,6 +36,8 @@ public class BattleUnit : MonoBehaviour
             image.sprite = Monster.Base.FrontSprite;
         }
 
+
+        image.color = originalColor;
         PlayEnterAnimation();
     }
 
