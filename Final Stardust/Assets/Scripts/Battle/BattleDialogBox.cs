@@ -77,6 +77,13 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
+    public void HideCards(bool enabled)
+    {
+        
+        actionTexts[1].enabled = enabled;
+        
+    }
+
     public void UpdateMoveSelection(int selectedMove, Move move)
     {
         for(int i = 0; i < moveTexts.Count; i++)
@@ -98,7 +105,7 @@ public class BattleDialogBox : MonoBehaviour
     {
         cardText.color = highlightedColor;
     }
-    
+
     public void SetMoveNames(List<Move> moves)
     {
         for(int i=0; i < moveTexts.Count; ++i)

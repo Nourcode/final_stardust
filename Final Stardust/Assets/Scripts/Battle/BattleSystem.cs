@@ -37,6 +37,7 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(playerUnit.Monster.Moves);
 
         
+
         yield return dialogBox.TypeDialog("It's time for a duel!");
         yield return new WaitForSeconds(1.5f);
         yield return dialogBox.TypeDialog("*You draw a card*");
@@ -140,7 +141,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator IncreaseStat()
     {
-        yield return dialogBox.TypeDialog($"{playerUnit.Monster.Base.Name}'s attack has doubled for one turn!");
+        yield return dialogBox.TypeDialog("Kairox's attack has doubled for one turn!");
 
         playerUnit.PlayBoostAnimation();
 
@@ -148,11 +149,11 @@ public class BattleSystem : MonoBehaviour
         newAttack = currentAttack * 2;
         playerUnit.Monster.Base.Attack = newAttack;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
-        yield return dialogBox.TypeDialog($"Player: Now! {playerUnit.Monster.Base.Name} use Aircut again!");
+        yield return dialogBox.TypeDialog("You have no cards left.");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         //Debug.Log($" this is newAttack {newAttack} and this is the base's attack{playerUnit.Monster.Base.Attack}");
         PlayerAction();
     }
@@ -256,8 +257,9 @@ public class BattleSystem : MonoBehaviour
         {
             dialogBox.EnableCardSelector(false);
             dialogBox.EnableDialogText(true);
-            
             StartCoroutine(IncreaseStat());
+            dialogBox.HideCards(false);
+            --currentAction;
         }
 
         if(Input.GetKeyDown(KeyCode.E))
