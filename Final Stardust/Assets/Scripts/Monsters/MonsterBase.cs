@@ -56,6 +56,7 @@ public class MonsterBase : ScriptableObject
 
     public int Attack {
         get { return attack;}
+        set { this.attack = value; }
     }
 
     public int Defense {

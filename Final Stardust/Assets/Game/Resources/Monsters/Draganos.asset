@@ -19,8 +19,8 @@ MonoBehaviour:
   type1: 2
   maxHP: 45
   maxMP: 25
-  attack: 49
-  defense: 49
+  attack: 80
+  defense: 77
   spAttack: 65
   spDefense: 65
   speed: 45

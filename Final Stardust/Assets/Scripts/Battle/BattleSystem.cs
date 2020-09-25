@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
 
-public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy}
+public enum BattleState { Start, PlayerAction, PlayerMove, PlayerCard, EnemyMove, Busy}
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleUnit playerUnit;
@@ -19,6 +19,9 @@ public class BattleSystem : MonoBehaviour
     BattleState state;
     int currentAction;
     int currentMove;
+
+    int currentAttack;
+    int newAttack;
 
     public void StartBattle() {
         StartCoroutine(SetupBattle());
@@ -58,6 +61,14 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
+    void PlayerCard()
+    {
+        state = BattleState.PlayerCard;
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableDialogText(false);
+        dialogBox.EnableCardSelector(true);
+    }
+
     IEnumerator PerformPlayerMove()
     {
         state = BattleState.Busy;
@@ -79,6 +90,8 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Monster.LoseMP(move);
         yield return playerHud.UpdateMP();
 
+        //Main attack value before using a card
+        playerUnit.Monster.Base.Attack = 52;
 
         if(isFainted)
         {
@@ -122,7 +135,28 @@ public class BattleSystem : MonoBehaviour
         {
             PlayerAction();
         }
+
     }
+
+    IEnumerator IncreaseStat()
+    {
+        yield return dialogBox.TypeDialog($"{playerUnit.Monster.Base.Name}'s attack has doubled for one turn!");
+
+        playerUnit.PlayBoostAnimation();
+
+        currentAttack = playerUnit.Monster.Base.Attack;
+        newAttack = currentAttack * 2;
+        playerUnit.Monster.Base.Attack = newAttack;
+
+        yield return new WaitForSeconds(1f);
+
+        yield return dialogBox.TypeDialog($"Player: Now! {playerUnit.Monster.Base.Name} use Aircut again!");
+
+        yield return new WaitForSeconds(1f);
+        //Debug.Log($" this is newAttack {newAttack} and this is the base's attack{playerUnit.Monster.Base.Attack}");
+        PlayerAction();
+    }
+
     public void HandleUpdate() {
         if(state == BattleState.PlayerAction)
         {
@@ -131,6 +165,10 @@ public class BattleSystem : MonoBehaviour
         else if(state == BattleState.PlayerMove)
         {
             HandleMoveSelection();
+        }
+        else if(state == BattleState.PlayerCard)
+        {
+            HandleCardSelection();
         }
     }
     
@@ -160,9 +198,10 @@ public class BattleSystem : MonoBehaviour
             }
             else if(currentAction == 1)
             {
-                //Cards
+                PlayerCard();
             }
         }
+
     }
 
     void HandleMoveSelection()
@@ -200,5 +239,32 @@ public class BattleSystem : MonoBehaviour
 
         }
 
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            dialogBox.EnableMoveSelector(false);
+            dialogBox.EnableDialogText(true);
+            PlayerAction();
+        }
+
+    }
+
+    void HandleCardSelection()
+    {
+        dialogBox.UpdateCardSelection();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            dialogBox.EnableCardSelector(false);
+            dialogBox.EnableDialogText(true);
+            
+            StartCoroutine(IncreaseStat());
+        }
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            dialogBox.EnableCardSelector(false);
+            dialogBox.EnableDialogText(true);
+            PlayerAction();
+        }
     }
 }

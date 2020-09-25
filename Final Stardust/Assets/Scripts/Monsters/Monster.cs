@@ -87,4 +87,11 @@ public class Monster
         int r = Random.Range(0, Moves.Count);
         return Moves[r];
     }
+
+    public void DoubleAttack(Monster noob)
+    {
+        //noob.Attack = (float)noob.Attack) * 2; 
+    }
+
+
 }

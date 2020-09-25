@@ -13,9 +13,13 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
 
+    [SerializeField] GameObject cardSelector;
+    [SerializeField] GameObject cardDetails;
+
     [SerializeField] List<Text> actionTexts;
     [SerializeField] List<Text> moveTexts;
 
+    [SerializeField] Text cardText;
     [SerializeField] Text mpText;
     [SerializeField] Text typeText;
 
@@ -52,6 +56,12 @@ public class BattleDialogBox : MonoBehaviour
 
     }
 
+    public void EnableCardSelector(bool enabled)
+    {
+        cardSelector.SetActive(enabled);
+        cardDetails.SetActive(enabled);
+    }
+
     public void UpdateActionSelection(int selectedAction)
     {
         for(int i=0; i < actionTexts.Count; i++)
@@ -83,6 +93,12 @@ public class BattleDialogBox : MonoBehaviour
         mpText.text = $"MP: {move.MP}";
         typeText.text = move.Base.Type.ToString();
     }
+
+    public void UpdateCardSelection()
+    {
+        cardText.color = highlightedColor;
+    }
+    
     public void SetMoveNames(List<Move> moves)
     {
         for(int i=0; i < moveTexts.Count; ++i)
