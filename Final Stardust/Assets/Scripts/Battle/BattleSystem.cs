@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
 
 public enum BattleState { Start, PlayerAction, PlayerMove, PlayerCard, EnemyMove, Busy}
 public class BattleSystem : MonoBehaviour
@@ -36,14 +35,11 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.SetMoveNames(playerUnit.Monster.Moves);
 
-        
-
-        yield return dialogBox.TypeDialog("It's time for a duel!");
+        yield return dialogBox.TypeDialog("Mirashi challenged you!");
         yield return new WaitForSeconds(1.5f);
         yield return dialogBox.TypeDialog("*You draw a card*");
         yield return new WaitForSeconds(1.5f);
         
-
         PlayerAction();
     }
 
@@ -149,7 +145,7 @@ public class BattleSystem : MonoBehaviour
         newAttack = currentAttack * 2;
         playerUnit.Monster.Base.Attack = newAttack;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         yield return dialogBox.TypeDialog("You have no cards left.");
 

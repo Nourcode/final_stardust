@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
 
     private Animator animator;
+
+    [SerializeField] PlayableDirector director; 
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -79,10 +82,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        CheckForBattle();
+        if(director != null)
+        {
+            director.Play();
+        }
+
+        //CheckForBattle();
     }
     
-    private void CheckForBattle()
+    public void CheckForBattle()
     {
         animator.SetBool("isMoving", false);
         OnDialogue();
