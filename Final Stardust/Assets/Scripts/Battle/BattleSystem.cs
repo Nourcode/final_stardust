@@ -7,11 +7,12 @@ public enum BattleState { Start, PlayerAction, PlayerMove, PlayerCard, EnemyMove
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleUnit enemyUnit;
-    
+    [SerializeField] BattleUnit enemyUnit;    
     [SerializeField] BattleHud playerHud;
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
+
+    [SerializeField] private Animator rivalController;
 
     public event Action<bool> OnBattleOver;
  
@@ -28,6 +29,8 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator SetupBattle()
     {
+        yield return new WaitForSeconds(1.7f);
+
         playerUnit.Setup();
         enemyUnit.Setup();
         playerHud.SetData(playerUnit.Monster);
@@ -95,8 +98,12 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{enemyUnit.Monster.Base.Name} is K.O!");
             enemyUnit.PlayFaintAnimation();
 
+            yield return new WaitForSeconds(1f);
+
+            rivalController.SetBool("battleOver", true);
             yield return new WaitForSeconds(2f);
-            OnBattleOver(true);
+            yield return dialogBox.TypeDialog("Mirashi: Impossible...this can't happen...");
+            //OnBattleOver(true);
 
         } else 
         {
@@ -126,7 +133,7 @@ public class BattleSystem : MonoBehaviour
             playerUnit.PlayFaintAnimation();
 
             yield return new WaitForSeconds(2f);
-            OnBattleOver(false);
+            //OnBattleOver(false);
 
         } else 
         {

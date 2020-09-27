@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class DialogueHolder : MonoBehaviour
 {
+
+    public Canvas crossFade;
+    public Animator transition;
+    public float transitionTime = 1f;
     [SerializeField] PlayableDirector director; 
     [SerializeField] PlayerController playerController; 
 
@@ -25,12 +29,22 @@ public class DialogueHolder : MonoBehaviour
         gameObject.SetActive(false);
         dialogBoxCharacter.enabled = false;
 
+        
+
+        //crossFade.enabled = true;
+
+        //transition.SetTrigger("Start");
+
+        //yield return new WaitForSeconds(transitionTime);
+
         if(director != null)
         {
             director.Stop();
         }
 
         playerController.CheckForBattle();
+        //StartCoroutine(LoadLevel());
+        //playerController.CheckForBattle();
     }
 
     private void Deactive()
@@ -39,5 +53,11 @@ public class DialogueHolder : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator LoadLevel()
+    {
+        yield return null;
+        
     }
 }

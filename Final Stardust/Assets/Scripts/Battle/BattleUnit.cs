@@ -51,7 +51,7 @@ public class BattleUnit : MonoBehaviour
             image.transform.localPosition = new Vector3(500f, originalPos.y);
         }
 
-        image.transform.DOLocalMoveX(originalPos.x, 1f);
+        image.transform.DOLocalMoveX(originalPos.x, 1.2f);
     }
 
     public IEnumerator PlayAttackAnimation()
