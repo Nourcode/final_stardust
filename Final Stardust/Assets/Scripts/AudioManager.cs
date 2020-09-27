@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
           s.source.pitch = s.pitch;
           s.source.loop = s.loop;
       }  
+
+      FindObjectOfType<AudioManager>().Play("VoidSong");
     }
 
     public void Play(string name) {
@@ -33,7 +35,12 @@ public class AudioManager : MonoBehaviour
         s.source.volume = 0.5f;
     }
 
-    public IEnumerator Stop(string name) {
+    public void Stop(string name) {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Stop();
+    }
+
+    public IEnumerator FadeOut(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         s.source.volume -= s.source.volume * Time.deltaTime / 0.05f;

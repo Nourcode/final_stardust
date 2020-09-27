@@ -30,6 +30,7 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator SetupBattle()
     {
         // Wait For Battle Transition
+        FindObjectOfType<AudioManager>().Stop("VoidSong");
         FindObjectOfType<AudioManager>().Play("BattleSong");
         yield return new WaitForSeconds(1.7f);
 
@@ -111,7 +112,7 @@ public class BattleSystem : MonoBehaviour
             
             yield return new WaitForSeconds(2f);
             
-            StartCoroutine(FindObjectOfType<AudioManager>().Stop("BattleSong"));
+            StartCoroutine(FindObjectOfType<AudioManager>().FadeOut("BattleSong"));
             FindObjectOfType<AudioManager>().Play("FinalLine");
 
             yield return dialogBox.TypeDialog("This can't happen...");

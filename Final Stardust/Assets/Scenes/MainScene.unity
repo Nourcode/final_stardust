@@ -1885,6 +1885,12 @@ MonoBehaviour:
   - name: GoKairox
     clip: {fileID: 8300000, guid: f2cc0f5c73f3b5c4abf77ecc1e0cfda8, type: 3}
     volume: 0.6
+    pitch: 0.96
+    loop: 0
+    source: {fileID: 0}
+  - name: VoidSong
+    clip: {fileID: 8300000, guid: dd95d732457cabe49958f89fbbbd6733, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
