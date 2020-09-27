@@ -29,7 +29,12 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator SetupBattle()
     {
+        // Wait For Battle Transition
+        FindObjectOfType<AudioManager>().Play("BattleSong");
         yield return new WaitForSeconds(1.7f);
+
+        // Lower Volume To Hear Sound Effects
+        FindObjectOfType<AudioManager>().LowerVolume("BattleSong");
 
         playerUnit.Setup();
         enemyUnit.Setup();
@@ -77,7 +82,9 @@ public class BattleSystem : MonoBehaviour
         
         yield return dialogBox.TypeDialog($"{playerUnit.Monster.Base.Name} uses {move.Base.Name}");
 
+        FindObjectOfType<AudioManager>().Play("CutMove");
         StartCoroutine(playerUnit.PlayAttackAnimation());
+        
         
         yield return new WaitForSeconds(1f);
 
@@ -101,8 +108,15 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             rivalController.SetBool("battleOver", true);
+            
             yield return new WaitForSeconds(2f);
-            yield return dialogBox.TypeDialog("Mirashi: Impossible...this can't happen...");
+            
+            StartCoroutine(FindObjectOfType<AudioManager>().Stop("BattleSong"));
+            FindObjectOfType<AudioManager>().Play("FinalLine");
+
+            yield return dialogBox.TypeDialog("This can't happen...");
+            yield return new WaitForSeconds(2f);
+            yield return dialogBox.TypeDialog("THE END. Made By Nour Saidana.");
             //OnBattleOver(true);
 
         } else 
@@ -119,6 +133,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($"{enemyUnit.Monster.Base.Name} uses {move.Base.Name}");
 
+        FindObjectOfType<AudioManager>().Play("CutMove");
         StartCoroutine(enemyUnit.PlayEnemyAttackAnimation());
         
         yield return new WaitForSeconds(1f);
@@ -133,6 +148,7 @@ public class BattleSystem : MonoBehaviour
             playerUnit.PlayFaintAnimation();
 
             yield return new WaitForSeconds(2f);
+            yield return dialogBox.TypeDialog("Restart the game. Next time make sure to use the card!");
             //OnBattleOver(false);
 
         } else 
@@ -144,7 +160,8 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator IncreaseStat()
     {
-        yield return dialogBox.TypeDialog("Kairox's attack has doubled for one turn!");
+        FindObjectOfType<AudioManager>().Play("GoKairox");
+        yield return dialogBox.TypeDialog("Go! Kairox!");
 
         playerUnit.PlayBoostAnimation();
 
