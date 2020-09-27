@@ -1880,7 +1880,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5fc0bfb90365b2245a99004d1ff8ad7a, type: 3}
     volume: 0.8
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: GoKairox
     clip: {fileID: 8300000, guid: f2cc0f5c73f3b5c4abf77ecc1e0cfda8, type: 3}
@@ -1892,7 +1892,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: dd95d732457cabe49958f89fbbbd6733, type: 3}
     volume: 0.8
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &385083507
 Transform:
