@@ -119,6 +119,9 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2f);
             yield return dialogBox.TypeDialog("THE END. Made By Nour Saidana.");
             //OnBattleOver(true);
+            yield return new WaitForSeconds(3f);
+            Application.Quit();
+
 
         } else 
         {
