@@ -10,7 +10,7 @@ Watch the trailer here: *coming soon*
 
 ### Why You Should Contribute
 
-I did everything by myself so far(from scratch): The coding, the art and the music but I don’t excel in any of those fields. My main problem is that I only started game development a month ago. Based on my current skills, it would take me 2-3 years to create the whole game on my own. I have no problem building the whole thing myself(since I would learn so many new things) but I want to try something different as I just spent the last 2 years on an individual project.
+I did everything by myself so far(from scratch): The coding, the art and the music(voice acting too) but I don’t excel in any of those fields. My main problem is that I only started game development a month ago. Based on my current skills, it would take me 2-3 years to create the whole game on my own. I have no problem building the whole thing myself(since I would learn so many new things) but I want to try something different as I just spent the last 2 years on an individual project.
 
 That’s why I am looking for people that want to contribute to the making of a turn-based RPG. I know there are so many lazy and talented people out there who have x10 my level and who are just waiting for a small push, which is something that I can provide. Think about having your own art or song in a finished product. Maybe this is the project that you need to get more attention and sell your art, songs, or other services...who knows. I will share everything concerning the project on YouTube, that’s for sure. 
 
@@ -38,6 +38,8 @@ Once you win the battle, the game will close automatically after 3 seconds.
 ### Download Link
 
 The game is made with the game engine "Unity". In case you don't know how to use the Github project to build the game with Unity, you can use the download link below. The art style is called "pixel art" and I used the software called "aesprite" to design every pixel you see in the game. The game design is heavily inspired by Pokemon's fifth generation(Black/White, Black 2/White 2) which has my favorite "Pokemon" graphics. 
+
+*Special Note: In case you are wondering about the Japanese part, I have been learning the language for 2 years so I added that just for fun.* 
 
 Get the game here: *Coming Soon*
 
