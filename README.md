@@ -43,9 +43,9 @@ The game is made with the game engine "Unity". In case you don't know how to use
 
 *Special Note: In case you are wondering about the Japanese part, I have been learning the language for 2 years so I added that just for fun.* 
 
-Get the game here: *Coming Soon*
+Get the game here: http://www.mediafire.com/file/28k5n9tndgd80nz/FinalStardustPrototype.zip/file
 
-PS: The game only works for Windows/PCs. 
+The game only works for Windows/PCs. 
 
 In case you have a problem, feel free to send me an email: noureddinesaidana@gmail.com
 
