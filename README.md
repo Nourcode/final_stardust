@@ -1,7 +1,7 @@
 # FINAL STARDUST
 A turn-based 2D RPG game inspired by Pokemon, Golden Sun and Yu-Gi-Oh. The current version(prototype) is made for demonstration purposes only and doesn't reflect in any way the final version of the game. 
 
-Watch the trailer here: *coming soon*
+Watch the trailer here: https://www.youtube.com/watch?v=nIggOmaw-TU
 
 Devlogs(10 Episodes): https://www.youtube.com/playlist?list=PLqL3DZDhfU0U0EcnYRVbasShUJgHxjonB
 
