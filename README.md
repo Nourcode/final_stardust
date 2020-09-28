@@ -8,7 +8,8 @@ Devlogs(10 Episodes): https://www.youtube.com/playlist?list=PLqL3DZDhfU0U0EcnYRV
 ## Table Of Contents 
 1) Why You Should Contribute To The Project
 2) How To Play The Game
-3) Download Link
+3) Used Tech/Softwares
+4) Download Link
 
 ### Why You Should Contribute
 
@@ -37,11 +38,13 @@ I made it so that the game works for the trailer but I didn't "fix" all my code 
 
 Once you win the battle, the game will close automatically after 3 seconds.
 
-### Download Link
+### Used Tech/Softwares 
 
-The game is made with the game engine "Unity". In case you don't know how to use the Github project to build the game with Unity, you can use the download link below. The art style is called "pixel art" and I used the software called "aesprite" to design every pixel you see in the game. The game design is heavily inspired by Pokemon's fifth generation(Black/White, Black 2/White 2) which has my favorite "Pokemon" graphics. 
+The game is made with the game engine "Unity" and the programming language C#. In case you don't know how to use the Github project to build the game with Unity, you can use the download link below. The art style is called "pixel art" and I used the software called "aesprite" to design every pixel you see in the game. The game design is heavily inspired by Pokemon's fifth generation(Black/White, Black 2/White 2) which has my favorite "Pokemon" graphics. For the music I used LMMS(a free alternative to FL Studio) and Audacity for the voice recording + sound effect. 
 
 *Special Note: In case you are wondering about the Japanese part, I have been learning the language for 2 years so I added that just for fun.* 
+
+### Download Link
 
 Get the game here: http://www.mediafire.com/file/28k5n9tndgd80nz/FinalStardustPrototype.zip/file
 
