@@ -3,6 +3,8 @@ A turn-based 2D RPG game inspired by Pokemon, Golden Sun and Yu-Gi-Oh. The curre
 
 Watch the trailer here: *coming soon*
 
+Devlogs(10 Episodes): https://www.youtube.com/playlist?list=PLqL3DZDhfU0U0EcnYRVbasShUJgHxjonB
+
 ## Table Of Contents 
 1) Why You Should Contribute To The Project
 2) How To Play The Game
